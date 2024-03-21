@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import dayjs from "dayjs";
+import Delete from "../components/popups/delete";
 const Details = () => {
   const { id } = useParams();
 
@@ -17,6 +18,7 @@ const Details = () => {
   }, [id]);
   return (
     <div className="bg-dark p-8 flex justify-center">
+      <Delete id={id} />
       <div className="space-y-4 w-fit items-center">
         <img className=" rounded-lg" src={`${data.thumbnail}`} />
         <div className="text-white bg-base rounded-lg text-center">
@@ -32,7 +34,12 @@ const Details = () => {
           {dayjs(data.createdAt).format("YYYY-MM-DD")}
         </div>
         <div>
-          <button className="btn bg-danger text-white w-full">Delete</button>
+          <button
+            onClick={() => document.getElementById("delete").showModal()}
+            className="btn bg-danger text-white w-full"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

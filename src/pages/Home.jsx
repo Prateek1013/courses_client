@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 const Home = () => {
   const [courses, setCourses] = useState([]);
-  const x=`${import.meta.env.VITE_API_URL}`;
-  const url='http://localhost:4000'
+  const x = `${import.meta.env.VITE_API_URL}`;
+  const url = "http://localhost:4000";
   console.log(x);
   useEffect(() => {
     const func = async () => {
@@ -14,9 +14,9 @@ const Home = () => {
     func();
   }, []);
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 bg-base h-screen">
       {courses.map((course) => (
-        <div key={course._id}>
+        <div key={course._id} className="flex justify-center">
           <Card course={course} />
         </div>
       ))}
