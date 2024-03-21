@@ -19,7 +19,7 @@ const AddCourse = () => {
       },
     });
     setLoading(false);
-    alert("course Added");
+    window.location.reload();
   };
 
   return (
