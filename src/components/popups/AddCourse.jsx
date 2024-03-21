@@ -2,13 +2,27 @@ import { useState } from "react";
 
 const AddCourse = () => {
   const [data, setData] = useState({
+    thumbnail: "",
     name: "",
     author: "",
-    thumbnail: "",
   });
+  const url = "http://localhost:4000";
   const [loading, setLoading] = useState(false);
-  const handleAddCourse=async()=>{
-  }
+  const handleAddCourse = async () => {
+    console.log(data);
+    setLoading(true);
+    const res = await fetch(`${url}/course`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    // const dat = await res.json();
+    setLoading(false);
+    alert("course Added");
+  };
+
   return (
     <dialog id="add-course" className="modal">
       <div className="modal-box">
@@ -18,7 +32,7 @@ const AddCourse = () => {
             ✕
           </button>
         </form>
-        <form method="dialog" onSubmit={() => console.log(data)}>
+        <form method="dialog">
           <div className="flex flex-col gap-4">
             <label className="form-control w-full">
               <div className="label">
@@ -83,8 +97,14 @@ const AddCourse = () => {
                 type="date"
               />
             </label>
-            <button className="btn btn-sm btn-primary" type="submit">
-              {loading && <span className="loading loading-bars loading-xs"></span>}
+            <button
+              onClick={handleAddCourse}
+              className="btn btn-sm btn-primary"
+              type="submit"
+            >
+              {loading && (
+                <span className="loading loading-bars loading-xs"></span>
+              )}
               Add
             </button>
           </div>
