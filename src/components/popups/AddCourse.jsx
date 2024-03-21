@@ -18,7 +18,6 @@ const AddCourse = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     });
-    // const dat = await res.json();
     setLoading(false);
     alert("course Added");
   };

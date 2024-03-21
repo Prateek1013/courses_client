@@ -11,6 +11,7 @@ export default {
         primary: "#3263F7",
         error: "#FF4949",
         warning: "#FFB800",
+        danger: "#FF4949",
       },
     },
   },
