@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 const Home = () => {
   const [courses, setCourses] = useState([]);
-  const x = `${import.meta.env.VITE_API_URL}`;
   const url = "http://localhost:4000";
-  console.log(x);
   useEffect(() => {
     const func = async () => {
       const res = await fetch(`${url}/courses`);
@@ -14,12 +12,20 @@ const Home = () => {
     func();
   }, []);
   return (
-    <div className="grid grid-cols-2 bg-base h-screen">
-      {courses.map((course) => (
-        <div key={course._id} className="flex justify-center">
-          <Card course={course} />
-        </div>
-      ))}
+    <div className="h-full">
+      <div className="grid grid-cols-2 bg-base">
+        {courses.length > 0 ? (
+          courses.map((course) => (
+            <div key={course._id} className="flex justify-center">
+              <div className="p-2">
+                <Card course={course} />
+              </div>
+            </div>
+          ))
+        ) : (
+          <div>No courses found!</div>
+        )}
+      </div>
     </div>
   );
 };

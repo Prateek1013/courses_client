@@ -17,29 +17,31 @@ const Details = () => {
     func();
   }, [id]);
   return (
-    <div className="bg-dark p-8 flex justify-center">
-      <Delete id={id} />
-      <div className="space-y-4 w-fit items-center">
-        <img className=" rounded-lg" src={`${data.thumbnail}`} />
-        <div className="text-white bg-base rounded-lg text-center">
-          {data.name}
-        </div>
-        <div className="text-white bg-base rounded-lg text-center">
-          {data.author}
-        </div>
-        <div className="text-white bg-base rounded-lg text-center">
-          {data.description}
-        </div>
-        <div className="text-white bg-base rounded-lg text-center">
-          {dayjs(data.createdAt).format("YYYY-MM-DD")}
-        </div>
-        <div>
-          <button
-            onClick={() => document.getElementById("delete").showModal()}
-            className="btn bg-danger text-white w-full"
-          >
-            Delete
-          </button>
+    <div className="p-2 rounded-lg">
+      <div className="bg-dark p-8 flex justify-center">
+        <Delete id={id} />
+        <div className="space-y-4 w-fit items-center">
+          <img className="h-64 rounded-lg" src={`${data.thumbnail}`} />
+          <div className="text-white bg-base rounded-lg text-center">
+            {data.name}
+          </div>
+          <div className="text-white bg-base rounded-lg text-center">
+            {data.author}
+          </div>
+          <div className="text-white bg-base rounded-lg text-center">
+            {data.description}
+          </div>
+          <div className="text-white bg-base rounded-lg text-center">
+            {dayjs(data.createdAt).format("YYYY-MM-DD")}
+          </div>
+          <div>
+            <button
+              onClick={() => document.getElementById("delete").showModal()}
+              className="btn bg-danger text-white w-full"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </div>
